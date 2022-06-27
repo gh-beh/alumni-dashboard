@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
                 this.failed = true;
                 this.loading = false;
               } else {
-                this.router.navigate(['admin/dashboard'], {relativeTo: this.route.root});
+                this.router.navigate(['admin/discussion-board'], {relativeTo: this.route.root});
               }
             },
             error => {

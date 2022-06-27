@@ -23,6 +23,11 @@ export class AlumniComponent implements OnInit, OnDestroy {
   emptyAlumni: Alumni;
   submitted = false;
   searchText = '';
+  pageIndex = 0;
+  pageSize = 10;
+  lowValue = 0;
+  highValue = 10;
+  pageSizeOptions = [5, 10, 15, 20];
 
   private ngUnsub: Subject<any> = new Subject();
 
@@ -83,6 +88,7 @@ export class AlumniComponent implements OnInit, OnDestroy {
     this.formAlumni = {...alumni};
     this.showTable = false;
     this.showForm = true;
+    this.submitted = false;
   }
 
   hideForm() {
@@ -93,6 +99,7 @@ export class AlumniComponent implements OnInit, OnDestroy {
 
   submitForm() {
     // POST here
+    this.submitted = true;
     const submitAlumni = {...this.formAlumni};
     const response = this.createAlumni ? this.memberService.addMember(submitAlumni) : this.memberService.updateMember(submitAlumni);
     response.pipe(takeUntil(this.ngUnsub)).subscribe(() => {
@@ -119,6 +126,18 @@ export class AlumniComponent implements OnInit, OnDestroy {
 
   onClearSearch() {
     if (this.searchText === '') { this.setDisplay(); }
+  }
+
+  getPaginatorData(event){
+    console.log(event);
+    if (event.pageIndex === this.pageIndex + 1){
+      this.lowValue = this.lowValue + this.pageSize;
+      this.highValue =  this.highValue + this.pageSize;
+    } else if (event.pageIndex === this.pageIndex - 1) {
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue =  this.highValue - this.pageSize;
+    }
+    this.pageIndex = event.pageIndex;
   }
 
   ngOnDestroy(): any {

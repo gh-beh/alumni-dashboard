@@ -12,6 +12,8 @@ import {FaqComponent} from '../../faq/faq.component';
 import {FaqCategoryComponent} from '../../faq-categories/faq-categories.component';
 import {AdminLayoutComponent} from './admin-layout.component';
 import {AuthGuard} from '../../helpers/auth.guard';
+import {AdminGuard} from '../../helpers/admin.guard';
+import {DiscussionBoardComponent} from '../../discussion-board/discussion-board.component';
 
 const AdminLayoutRoutes: Routes = [
     {
@@ -19,13 +21,19 @@ const AdminLayoutRoutes: Routes = [
         component: AdminLayoutComponent,
         canActivateChild: [AuthGuard],
         children: [
-            { path: 'dashboard',      component: DashboardComponent },
+            // { path: 'dashboard',      component: DashboardComponent },
+            { path: 'discussion-board',     component: DiscussionBoardComponent },
             { path: 'member-listing',   component: AlumniComponent },
             { path: 'event-activities',     component: EventsComponent },
             { path: 'faq',     component: FaqComponent },
             { path: 'faq-categories',     component: FaqCategoryComponent },
             { path: 'loyalty-rewards',     component: RewardsComponent },
         ]
+    },
+    {
+        path: '/admin',
+        component: DiscussionBoardComponent,
+        canActivate: [AdminGuard],
     },
     // { path: 'login',          component: LoginComponent },
     // { path: 'maps',           component: MapsComponent },

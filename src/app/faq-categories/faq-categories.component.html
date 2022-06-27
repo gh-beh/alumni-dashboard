@@ -21,7 +21,7 @@
             </form>
         </div>
         <div class="card-body">
-            <table *ngIf="showTable && faqCats.length > 0" class="table">
+            <table *ngIf="showTable && displayFaqCats.length > 0" class="table">
                 <thead class=" text-primary">
                 <tr class="d-flex">
                     <th class="col-2">
@@ -83,7 +83,10 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-2 col-sm-5">
-                        <button type="submit" class="btn btn-danger btn-lg w-100">Submit</button>
+                        <button type="submit" class="btn btn-danger btn-lg w-100" [attr.disabled]="submitted ? true : null">
+                            <span *ngIf="submitted" class="spinner-border spinner-border-sm mr-1"></span>
+                            Submit
+                        </button>
                     </div>
                     <div class="col-lg-1 col-sm-2"></div>
                     <div class="col-lg-2 col-sm-5">

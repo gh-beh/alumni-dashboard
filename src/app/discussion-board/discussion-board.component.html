@@ -1,0 +1,156 @@
+<div class="main-content d-flex flex-column">
+    <div class="card flex-grow-1">
+        <div class="card-header card-header-danger clearfix">
+            <div class="float-left">
+                <h4 class="card-title">Discussion Board Management</h4>
+                <p class="card-category">Discussion Board posts table listing</p>
+            </div>
+            <form *ngIf="showTable" class="float-right">
+                <div class="input-group no-border">
+                    <input type="text" [(ngModel)]="searchText" value="" (ngModelChange)="onClearSearch()" class="form-control align-self-center text-white" placeholder="Search...">
+                    <button *ngIf="searchText !== ''" type="button" class="btn btn-outline border-0 shadow-none btn-just-icon text-white" (click)="resetSearch()">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <button mat-raised-button type="button" class="btn btn-white btn-round btn-just-icon" (click)="setDisplay()">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table *ngIf="showTable && displayPosts.length > 0" class="table">
+                <thead class=" text-primary">
+                    <tr class="d-flex">
+                        <th class="col-2">
+                            Author
+                        </th>
+                        <th class="col-lg-7 col-5">
+                            Post Content
+                        </th>
+                        <th class="col-lg-1 col-2">
+                            Approval
+                        </th>
+                        <th class="col-lg-2 col-3"><!--Empty header for actions--></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let post of displayPosts, let i = index">
+                    <tr class="d-flex">
+                        <td class="col-2">
+                            {{post.alumniName}}
+                        </td>
+                        <td class="col-lg-7 col-5">
+                            {{post.text}}
+                        </td>
+                        <td class="col-lg-1 col-2">
+                            {{approvalMapping[post.approval]}}
+                        </td>
+                        <td class="col-lg-2 col-3 text-center align-self-center justify-content-between">
+                            <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="loadNestedPost(post)"><i class="material-icons">visibility</i></button>
+                            <button *ngIf="post.approval !== 1" class="btn btn-white btn-just-icon shadow-none text-danger" (click)="updatePostStatus(post.postId, 'approve')"><i class="material-icons">check</i></button>
+                            <button *ngIf="post.approval !== 2" class="btn btn-white btn-just-icon shadow-none text-danger" (click)="updatePostStatus(post.postId, 'reject')"><i class="material-icons">close</i></button>
+                            <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="removePost(post.postId)"><i class="material-icons">delete</i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="showTable && displayPosts.length === 0" class="h1 text-center">No posts found!</div>
+            <div *ngIf="showForm">
+                <div>
+                    <div class="row">
+                        <div class="col-lg-2 col-4 text-primary align-self-center">
+                            Author
+                        </div>
+                        <div class="col-lg-4 col-8">
+                            {{formAlumniName}}
+                        </div>
+                        <div class="col-lg-2 col-4 text-primary align-self-center">
+                            Approval Status
+                        </div>
+                        <div class="col-lg-4 col-8">
+                            {{approvalMapping[formPost.approval]}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-lg-2 text-primary align-self-center">
+                            Content
+                        </div>
+                        <div class="col-8 col-lg-10">
+                            {{formPost.text}}
+                        </div>
+                    </div>
+                    <div *ngIf="formPost.file !== ''" class="row">
+                        <div class="col-2 text-primary align-self-center">
+                            File
+                        </div>
+                        <div class="col-6">
+                            <a href="{{formPost.file}}">File Link</a>
+                        </div>
+                    </div>
+                    <div *ngIf="formPost.image !== ''" class="row">
+                        <div class="col-2 text-primary align-self-center">
+                            Image
+                        </div>
+                        <div class="col-10 d-flex justify-content-center">
+                            <img class="img mw-100 h-100" [src]="formPost.image || defaultImage">
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-4 col-lg-2 text-primary align-self-center">
+                            Created Date
+                        </div>
+                        <div class="col-8 col-lg-4">
+                            {{formPost.createdDate}}
+                        </div>
+                        <div class="col-4 col-lg-2 text-primary align-self-center">
+                            Modified Date
+                        </div>
+                        <div class="col-8 col-lg-4">
+                            {{formPost.modifiedDate}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-lg-2 text-primary align-self-center">
+                            Comments
+                        </div>
+                        <div *ngIf="showForm && formPost.comment.length === 0" class="col-8 col-lg-10">No comments found!</div>
+                    </div>
+                    <table *ngIf="formPost.comment.length > 0" class="table">
+                            <thead class=" text-primary">
+                            <tr class="d-flex">
+                                <th class="col-2">
+                                    Author
+                                </th>
+                                <th class="col-6">
+                                    Comment
+                                </th>
+                                <th class="col-2">
+                                    Status
+                                </th>
+                                <th class="col-2"><!--Empty header for actions--></th>
+                            </tr>
+                            </thead>
+                            <tbody *ngFor="let comment of formPost.comment, let i = index">
+                            <tr class="d-flex">
+                                <td class="col-2">
+                                    {{comment.userName}}
+                                </td>
+                                <td class="col-6">
+                                    {{comment.text}}
+                                </td>
+                                <td class="col-2">
+                                    {{statusMapping[comment.status.toString()]}}
+                                </td>
+                                <td class="col-2 text-center align-self-center justify-content-between">
+                                    <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="removeComment(comment.commentId)"><i class="material-icons">delete</i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <div class="align-self-baseline">
+                    <button type="button" class="btn btn-dark btn-lg w-100" (click)="hideForm()">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

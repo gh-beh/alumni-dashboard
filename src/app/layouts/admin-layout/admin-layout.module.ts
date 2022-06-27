@@ -23,6 +23,8 @@ import {FaqCategoryComponent} from '../../faq-categories/faq-categories.componen
 import {AdminLayoutComponent} from './admin-layout.component';
 import {ComponentsModule} from '../../components/components.module';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {DiscussionBoardComponent} from '../../discussion-board/discussion-board.component';
 import {EventsService} from '../../services/events.service';
 import {AlumniService} from '../../services/alumni.service';
 import {FaqService} from '../../services/faq.service';
@@ -46,11 +48,13 @@ import {ImgurService} from '../../services/imgur.service';
         MatDatepickerModule,
         MatIconModule,
         MatNativeDateModule,
+        MatPaginatorModule,
         NgbTimepickerModule,
     ],
     declarations: [
         AdminLayoutComponent,
         DashboardComponent,
+        DiscussionBoardComponent,
         AlumniComponent,
         FaqComponent,
         FaqCategoryComponent,
