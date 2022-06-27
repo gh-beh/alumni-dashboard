@@ -15,7 +15,7 @@ import { AlumniComponent } from './alumni/alumni.component';
 import { EventsComponent } from './events/events.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { LoginComponent } from './login/login.component';
-import { MapsComponent } from './maps/maps.component';
+import { MerchantComponent } from './merchant/merchant.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';

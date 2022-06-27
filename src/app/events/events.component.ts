@@ -53,11 +53,6 @@ export class EventsComponent implements OnInit, OnDestroy {
           endTime: ['', Validators.required],
         }
     );
-    this.f.startTime.valueChanges.pipe(takeUntil(this.ngUnsub))
-        .subscribe(
-            res => {
-              console.log(res);
-            });
   }
 
   get f(): { [key: string]: AbstractControl } {

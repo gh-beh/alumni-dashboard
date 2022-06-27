@@ -15,8 +15,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/admin/member-listing', title: 'Alumni Listing',  icon: 'person', class: '' },
     { path: '/admin/event-activities', title: 'Event & Activities',  icon: 'account_balance', class: '' },
     { path: '/admin/loyalty-rewards', title: 'Loyalty & Rewards',  icon: 'redeem', class: '' },
-    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
+    { path: '/admin/merchant', title: 'Merchants',  icon: 'storefront', class: '' },
+    { path: '/admin/notifications', title: 'Notifications',  icon: 'notifications', class: '' },
 ];
 
 export const FAQ_ITEMS: RouteInfo[] = [
@@ -25,8 +25,8 @@ export const FAQ_ITEMS: RouteInfo[] = [
 ];
 
 export const ADMIN_ROUTES: RouteInfo[] = [
-    { path: '/admin/faq-categories', title: 'Categories',  icon: 'format_list_bulleted', class: '' },
-]
+    { path: '/admin/manage', title: 'Admin Management',  icon: 'manage_accounts', class: '' },
+];
 
 @Component({
   selector: 'app-sidebar',

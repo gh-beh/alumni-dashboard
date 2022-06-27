@@ -5,8 +5,8 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { AlumniComponent } from '../../alumni/alumni.component';
 import { EventsComponent } from '../../events/events.component';
 import { RewardsComponent } from '../../rewards/rewards.component';
-import { LoginComponent } from '../../login/login.component';
-import { MapsComponent } from '../../maps/maps.component';
+// import { Admin } from '../../admin/admin.component';
+import { MerchantComponent } from '../../merchant/merchant.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import {FaqComponent} from '../../faq/faq.component';
 import {FaqCategoryComponent} from '../../faq-categories/faq-categories.component';
@@ -28,6 +28,9 @@ const AdminLayoutRoutes: Routes = [
             { path: 'faq',     component: FaqComponent },
             { path: 'faq-categories',     component: FaqCategoryComponent },
             { path: 'loyalty-rewards',     component: RewardsComponent },
+            { path: 'merchant',        component: MerchantComponent},
+            { path: 'notifications',  component: NotificationsComponent },
+            // { path: 'manage',       component: AdminComponent},
         ]
     },
     {
@@ -36,8 +39,6 @@ const AdminLayoutRoutes: Routes = [
         canActivate: [AdminGuard],
     },
     // { path: 'login',          component: LoginComponent },
-    // { path: 'maps',           component: MapsComponent },
-    // { path: 'notifications',  component: NotificationsComponent },
 ];
 
 @NgModule({

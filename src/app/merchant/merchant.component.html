@@ -1,12 +1,12 @@
 <div class="main-content d-flex flex-column">
     <div class="clearfix" *ngIf="showTable">
-        <button class="float-right btn btn-lg btn-danger" (click)="addNotif()">Add New</button>
+        <button class="float-right btn btn-lg btn-danger" (click)="addMerchant()">Add New</button>
     </div>
     <div class="card flex-grow-1">
         <div class="card-header card-header-danger clearfix">
             <div class="float-left">
-                <h4 class="card-title">Push Notifications</h4>
-                <p class="card-category">Push notification information table listing</p>
+                <h4 class="card-title">Merchants</h4>
+                <p class="card-category">Merchant information table listing</p>
             </div>
             <form *ngIf="showTable" class="float-right">
                 <div class="input-group no-border">
@@ -21,69 +21,51 @@
             </form>
         </div>
         <div class="card-body">
-            <table *ngIf="showTable && displayNotifs.length > 0" class="table">
+            <table *ngIf="showTable && displayMerchants.length > 0" class="table">
                 <thead class=" text-primary">
                 <tr class="d-flex">
-                    <th class="col-2 col-lg-1">
-                        Title
-                    </th>
-                    <th class="col-4 col-lg-5">
-                        Image
+                    <th class="col-2">
+                        No.
                     </th>
                     <th class="col-2 col-lg-3">
-                        Description
+                        Merchant Name
                     </th>
-                    <th class="col-2 col-lg-1">
-                        Status
+                    <th class="col-6 col-lg-5">
+                        Merchant Logo
                     </th>
                     <th class="col-2"><!--Empty header for actions--></th>
                 </tr>
                 </thead>
-                <tbody *ngFor="let notif of displayNotifs, let i = index">
+                <tbody *ngFor="let merchant of displayMerchants, let i = index">
                 <tr class="d-flex">
-                    <td class="col-2 col-lg-1 align-self-center">
-                        {{notif.title}}
-                    </td>
-                    <td class="col-4 col-lg-5 align-self-center">
-                        <img class="img mw-100" src="{{notif.image}}" appDefault="assets/img/img-default.png">
+                    <td class="col-2 align-self-center">
+                        {{i+1}}
                     </td>
                     <td class="col-2 col-lg-3 align-self-center">
-                        {{notif.description}}
+                        {{merchant.name}}
                     </td>
-                    <td class="col-2 col-lg-1 align-self-center">
-                        {{statusMapping[notif.push]}}
+                    <td class="col-6 col-lg-5 align-self-center">
+                        <img class="img mw-100" src="{{merchant.logo}}" appDefault="assets/img/img-default.png">
                     </td>
-                    <td class="col-2 text-center align-self-center justify-content-between">
-                        <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="editNotif(notif)"><i class="material-icons">edit</i></button>
-                        <button *ngIf="notif.push === 0" class="btn btn-white btn-just-icon shadow-none text-danger" (click)="pushNotif(notif.notificationId)"><i class="material-icons">compare_arrows</i></button>
-                        <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="removeNotif(notif.notificationId)"><i class="material-icons">delete</i></button>
+                    <td class="col-2 align-self-center justify-content-between">
+                        <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="editMerchant(merchant)"><i class="material-icons">edit</i></button>
+                        <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="removeMerchant(merchant.merchantId)"><i class="material-icons">delete</i></button>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div *ngIf="showTable && displayNotifs.length === 0" class="h1 text-center">No notifications found!</div>
-            <form *ngIf="showForm" [formGroup]="notificationForm" (ngSubmit)="submitForm()">
+            <div *ngIf="showTable && displayMerchants.length === 0" class="h1 text-center">No notifications found!</div>
+            <form *ngIf="showForm" [formGroup]="merchantForm" (ngSubmit)="submitForm()">
                 <div class="row">
                     <div class="col-2 text-primary align-self-center">
-                        Title
+                        Merchant Name
                     </div>
                     <div class="col-6">
                         <mat-form-field class="example-full-width">
-                            <input [(ngModel)]="formNotif.title" formControlName="title" matInput required>
+                            <input [(ngModel)]="formMerchant.name" formControlName="name" matInput required>
                         </mat-form-field>
                     </div>
-                    <div *ngIf="submitted && f.title.errors" class="form-error">*Invalid</div>
-                </div>
-                <div class="row">
-                    <div class="col-2 text-primary align-self-center">
-                        Description
-                    </div>
-                    <div class="col-8">
-                        <mat-form-field class="example-full-width">
-                            <textarea [(ngModel)]="formNotif.description" formControlName="description" matInput></textarea>
-                        </mat-form-field>
-                    </div>
-                    <div *ngIf="submitted && f.description.errors" class="form-error">*Invalid</div>
+                    <div *ngIf="submitted && f.name.errors" class="form-error">*Invalid</div>
                 </div>
                 <div class="row">
                     <div class="col-2 text-primary align-self-center">

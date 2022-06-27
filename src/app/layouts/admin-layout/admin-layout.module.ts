@@ -7,7 +7,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { AlumniComponent } from '../../alumni/alumni.component';
 import { EventsComponent } from '../../events/events.component';
 import { RewardsComponent } from '../../rewards/rewards.component';
-import { MapsComponent } from '../../maps/maps.component';
+import { MerchantComponent } from '../../merchant/merchant.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -60,7 +60,7 @@ import {ImgurService} from '../../services/imgur.service';
         FaqCategoryComponent,
         EventsComponent,
         RewardsComponent,
-        MapsComponent,
+        MerchantComponent,
         NotificationsComponent,
         ImagePreloadDirective,
     ]
