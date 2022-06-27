@@ -1,0 +1,90 @@
+<div class="main-content d-flex flex-column">
+    <div *ngIf="showTable" class="clearfix">
+        <button class="float-right btn btn-lg btn-danger" (click)="addAdmin()">Add New</button>
+    </div>
+    <div class="card flex-grow-1">
+        <div class="card-header card-header-danger clearfix">
+            <div class="float-left">
+                <h4 class="card-title">Admin Management</h4>
+                <p class="card-category">Admin account information table listing</p>
+            </div>
+            <form *ngIf="showTable" class="float-right">
+                <div class="input-group no-border">
+                    <input type="text" [(ngModel)]="searchText" value="" (ngModelChange)="onClearSearch()" class="form-control align-self-center text-white" placeholder="Search...">
+                    <button *ngIf="searchText !== ''" type="button" class="btn btn-outline border-0 shadow-none btn-just-icon text-white" (click)="resetSearch()">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <button mat-raised-button type="button" class="btn btn-white btn-round btn-just-icon" (click)="setDisplay()">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table *ngIf="showTable && displayAdmins.length > 0" class="table">
+                <thead class=" text-primary">
+                <tr class="d-flex">
+                    <th class="col-3">
+                        No.
+                    </th>
+                    <th class="col-6">
+                        Username
+                    </th>
+                    <th class="col-3"><!--Empty header for edit button--></th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let admin of displayAdmins, let i = index">
+                <tr class="d-flex">
+                    <td class="col-3 align-self-center">
+                        {{i+1}}
+                    </td>
+                    <td class="col-6 align-self-center">
+                        {{admin.username}}
+                    </td>
+                    <td class="col-3 text-center align-self-center justify-content-between">
+                        <button class="btn btn-white btn-just-icon shadow-none text-danger" (click)="editAdmin(admin);"><i class="material-icons">edit</i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div *ngIf="showTable && displayAdmins.length === 0" class="h1 text-center">No admins found!</div>
+            <form *ngIf="showForm" [formGroup]="adminForm" (ngSubmit)="submitForm()">
+                <div class="row">
+                    <div class="col-2 text-primary align-self-center">
+                        Username
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field *ngIf="createAdmin" class="example-full-width">
+                            <input [(ngModel)]="formAdmin.username" formControlName="username" matInput required>
+                        </mat-form-field>
+                        <div *ngIf="!createAdmin">{{formAdmin.username}}</div>
+                    </div>
+                    <div *ngIf="submitted && f.username.errors" class="form-error">*Invalid</div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-primary align-self-center">
+                        Password
+                    </div>
+                    <div class="col-8">
+                        <mat-form-field class="example-full-width">
+                            <input type="password" (ngModel)="formAdmin.password" formControlName="password" matInput required>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="submitted && f.password.errors" class="form-error">*Invalid</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-sm-5">
+                        <button type="submit" class="btn btn-danger btn-lg w-100" [attr.disabled]="submitted ? true : null">
+                            <span *ngIf="submitted" class="spinner-border spinner-border-sm mr-1"></span>
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-lg-1 col-sm-2"></div>
+                    <div class="col-lg-2 col-sm-5">
+                        <button type="button" class="btn btn-dark btn-lg w-100" (click)="hideForm()">Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -6,20 +6,9 @@ import { RouterModule } from '@angular/router';
 
 
 import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AlumniComponent } from './alumni/alumni.component';
-import { EventsComponent } from './events/events.component';
-import { RewardsComponent } from './rewards/rewards.component';
 import { LoginComponent } from './login/login.component';
-import { MerchantComponent } from './merchant/merchant.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import {EventsService} from './services/events.service';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 
 @NgModule({

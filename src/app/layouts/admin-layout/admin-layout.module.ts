@@ -25,11 +25,7 @@ import {ComponentsModule} from '../../components/components.module';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {DiscussionBoardComponent} from '../../discussion-board/discussion-board.component';
-import {EventsService} from '../../services/events.service';
-import {AlumniService} from '../../services/alumni.service';
-import {FaqService} from '../../services/faq.service';
-import {FaqCatService} from '../../services/faq-cat.service';
-import {ImgurService} from '../../services/imgur.service';
+import {AdminComponent} from '../../admin/admin.component';
 
 @NgModule({
     imports: [
@@ -53,6 +49,7 @@ import {ImgurService} from '../../services/imgur.service';
     ],
     declarations: [
         AdminLayoutComponent,
+        AdminComponent,
         DashboardComponent,
         DiscussionBoardComponent,
         AlumniComponent,

@@ -5,7 +5,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { AlumniComponent } from '../../alumni/alumni.component';
 import { EventsComponent } from '../../events/events.component';
 import { RewardsComponent } from '../../rewards/rewards.component';
-// import { Admin } from '../../admin/admin.component';
+import { AdminComponent } from '../../admin/admin.component';
 import { MerchantComponent } from '../../merchant/merchant.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import {FaqComponent} from '../../faq/faq.component';
@@ -30,15 +30,9 @@ const AdminLayoutRoutes: Routes = [
             { path: 'loyalty-rewards',     component: RewardsComponent },
             { path: 'merchant',        component: MerchantComponent},
             { path: 'notifications',  component: NotificationsComponent },
-            // { path: 'manage',       component: AdminComponent},
+            { path: 'manage', component: AdminComponent, canActivate: [AdminGuard]}
         ]
     },
-    {
-        path: '/admin',
-        component: DiscussionBoardComponent,
-        canActivate: [AdminGuard],
-    },
-    // { path: 'login',          component: LoginComponent },
 ];
 
 @NgModule({

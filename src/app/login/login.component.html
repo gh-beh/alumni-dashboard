@@ -14,9 +14,6 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="loginForm">
                 <input class="textInput" type="text" formControlName="username" value="Username">
                 <input class="textInput" type="password" formControlName="password" value="Password">
-<!--                <div class="resetPasswordLink">-->
-<!--                    <a class="linkText passwordReset" href="javascript:;"><i>Forgot Password?</i></a>-->
-<!--                </div>-->
                 <button [disabled]="loading" class="loginButton" type="submit">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     LOGIN

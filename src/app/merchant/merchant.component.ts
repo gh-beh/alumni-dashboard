@@ -88,8 +88,8 @@ export class MerchantComponent implements OnInit, OnDestroy {
     }
 
     submitForm() {
-        this.submitted = true;
         if (this.merchantForm.invalid) { return; }
+        this.submitted = true;
         // Create JSON body and parse dates
         const submitMerchant = {...this.formMerchant};
 

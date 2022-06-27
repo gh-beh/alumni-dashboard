@@ -56,14 +56,14 @@
     </ul>
     -->
   </div>
-<!--    <ul *ngIf="user.userRole === 2" class="nav">-->
-<!--        <li routerLinkActive="active" *ngFor="let adminItem of adminItems" class="{{adminItem.class}} nav-item">-->
-<!--            <a class="nav-link" [routerLink]="[adminItem.path]">-->
-<!--                <i class="material-icons">{{adminItem.icon}}</i>-->
-<!--                <p>{{adminItem.title}}</p>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--    </ul>-->
+    <ul *ngIf="user.userRole === 2" class="nav">
+        <li routerLinkActive="active" *ngFor="let adminItem of adminItems" class="{{adminItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[adminItem.path]">
+                <i class="material-icons">{{adminItem.icon}}</i>
+                <p>{{adminItem.title}}</p>
+            </a>
+        </li>
+    </ul>
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="[menuItem.path]">

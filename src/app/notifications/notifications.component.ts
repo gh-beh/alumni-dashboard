@@ -87,8 +87,8 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     }
 
     submitForm() {
-        this.submitted = true;
         if (this.notificationForm.invalid) { return; }
+        this.submitted = true;
         // Create JSON body and parse dates
         const submitNotif = {...this.formNotif};
 

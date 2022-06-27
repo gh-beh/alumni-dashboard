@@ -32,14 +32,6 @@ export class FaqComponent implements OnInit, OnDestroy {
   constructor(private faqService: FaqService, private faqCatService: FaqCatService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    /* MOCKING
-    this.mockFaqs = MOCK_FAQS;
-    this.mockFaqs.sort((a, b) =>
-      a.recordStatus
-        ? b.recordStatus ? 0 : -1
-        : b.recordStatus ? 1 : 0);
-    this.displayFaqs = this.mockFaqs;
-    */
     this.faqCatService.getFaqCats().pipe(takeUntil(this.ngUnsub))
         .subscribe(res => {
           this.faqCatNameMapping = {};
@@ -105,8 +97,8 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    this.submitted = true;
     if (this.faqForm.invalid) { return; }
+    this.submitted = true;
     // POST here
     const submitFaq = {...this.formFaq, faqCatId: parseInt(this.f.faqCatId.value, 10)};
     const response = this.createFaq

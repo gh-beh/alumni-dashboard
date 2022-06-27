@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Merchant, NULL_MERCHANT} from '../models/Merchant';
+import {Merchant, NULL_MERCHANT} from '../models/merchant';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
