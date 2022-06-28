@@ -32,7 +32,7 @@ export class RewardsComponent implements OnInit, OnDestroy {
   startTime = {hour: 12, minute: 0};
   endTime = {hour: 12, minute: 0};
   expiryTime = {hour: 12, minute: 0};
-  voucherTypeMapping = ['Period', 'Days'];
+  voucherTypeMapping = ['Fixed Date', 'Fixed Period'];
   merchants: Merchant[] = [];
 
   private ngUnsub: Subject<any> = new Subject();
