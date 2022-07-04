@@ -6,6 +6,5 @@
 interface environment {
     production: boolean,
     dbApiUrl: string,
-    serverUrl: string,
     imgurApiKey: string,
 }
