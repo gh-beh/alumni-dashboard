@@ -48,7 +48,7 @@ export class AlumniComponent implements OnInit, OnDestroy {
           studentHandphone: ['', [Validators.required, Validators.pattern(/^[0-9-+)(]+$/)]],
           studentTelephoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9-+)(]+$/)]],
           graduatingCampus: ['', Validators.required],
-          yearOfGraduation: ['', Validators.required, Validators.min(0)],
+          yearOfGraduation: ['', [Validators.required, Validators.min(0)]],
           graduatingProgramme: ['', Validators.required],
           graduatedProgrammeName: ['', Validators.required],
           levelOfStudy: ['', Validators.required],
@@ -100,7 +100,6 @@ export class AlumniComponent implements OnInit, OnDestroy {
   submitForm() {
     // POST here
     if (!this.alumniForm.valid) { return; }
-    console.log(this.alumniForm);
     this.submitted = true;
     const submitAlumni = {...this.formAlumni};
     const response = this.createAlumni ? this.memberService.addMember(submitAlumni) : this.memberService.updateMember(submitAlumni);
