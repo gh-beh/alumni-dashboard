@@ -161,7 +161,7 @@
                     </div>
                     <div class="col-8">
                         <mat-form-field class="example-full-width">
-                            <input matInput [(ngModel)]="formAlumni.yearOfGraduation" formControlName="yearOfGraduation">
+                            <input type="number" matInput [(ngModel)]="formAlumni.yearOfGraduation" formControlName="yearOfGraduation">
                         </mat-form-field>
                     </div>
                     <div *ngIf="submitted && f.yearOfGraduation.errors" class="form-error">*Invalid</div>
