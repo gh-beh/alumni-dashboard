@@ -134,7 +134,7 @@ export class RewardsComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    if (this.rewardForm.invalid) { return; }
+    if (!this.rewardForm.valid) { return; }
     this.submitted = true;
     console.log(this.startTime);
     // Create JSON body and parse dates

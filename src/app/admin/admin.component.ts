@@ -77,7 +77,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    if (this.adminForm.invalid) { return; }
+    if (!this.adminForm.valid) { return; }
     this.submitted = true;
     // POST here
     const submitFaq = {...this.formAdmin};

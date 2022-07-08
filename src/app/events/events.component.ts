@@ -111,7 +111,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    if (this.eventForm.invalid) { return; }
+    if (!this.eventForm.valid) { return; }
     this.submitted = true;
     // Create JSON body and parse dates
     const submitEvent = {...this.formEvent};

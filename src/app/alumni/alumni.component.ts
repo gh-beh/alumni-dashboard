@@ -99,7 +99,8 @@ export class AlumniComponent implements OnInit, OnDestroy {
 
   submitForm() {
     // POST here
-    if (this.alumniForm.invalid) { return; }
+    if (!this.alumniForm.valid) { return; }
+    console.log(this.alumniForm);
     this.submitted = true;
     const submitAlumni = {...this.formAlumni};
     const response = this.createAlumni ? this.memberService.addMember(submitAlumni) : this.memberService.updateMember(submitAlumni);

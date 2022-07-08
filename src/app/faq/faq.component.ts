@@ -97,7 +97,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
-    if (this.faqForm.invalid) { return; }
+    if (!this.faqForm.valid) { return; }
     this.submitted = true;
     // POST here
     const submitFaq = {...this.formFaq, faqCatId: parseInt(this.f.faqCatId.value, 10)};

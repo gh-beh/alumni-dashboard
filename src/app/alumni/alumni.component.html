@@ -73,7 +73,7 @@
                 </tr>
                 </tbody>
             </table>
-            <mat-paginator [length]="alumnis.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            <mat-paginator *ngIf="showTable && displayAlumni.length > 0" [length]="alumnis.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
                            (page)="getPaginatorData($event)">
             </mat-paginator>
             <div *ngIf="showTable && displayAlumni.length === 0" class="h1 text-center">No alumnis found!</div>
