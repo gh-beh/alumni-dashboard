@@ -221,7 +221,7 @@
                     </div>
                     <div class="col-6">
                         <mat-form-field class="example-full-width">
-                            <input [(ngModel)]="formReward.voucherLimit" formControlName="voucherLimit" matInput required>
+                            <input type="number" [(ngModel)]="formReward.voucherLimit" formControlName="voucherLimit" matInput required>
                         </mat-form-field>
                     </div>
                     <div *ngIf="submitted && f.voucherLimit.errors" class="form-error">*Invalid</div>
